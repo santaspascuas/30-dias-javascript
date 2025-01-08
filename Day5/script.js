@@ -80,3 +80,90 @@ if (index === -1) {
 
 const names = ["Asabeneh", "Mathias", "Elias", "Brook"];
 console.log(names.toString()); // Ahora es un string normal
+
+// Metodo para cortar arrays con slice.
+console.log(names.slice(1, 4));
+
+// Metodo para eliminar con splice
+console.log(names.splice(2, 3));
+
+// Añadir elementos a un array desde la posición final
+names.push("ekkoTheNeeko");
+console.log(names);
+
+// Eliminar el ultimo elemento con pop
+names.pop();
+console.log(names);
+
+// Darle la vuelta a un array con reverse
+const numbers = [1, 2, 3, 4, 5];
+numbers.reverse();
+console.log(numbers);
+
+// Metodo de ordenar con sort
+/*
+const webTechs = [
+  "HTML",
+  "CSS",
+  "JavaScript",
+  "React",
+  "Redux",
+  "Node",
+  "MongoDB",
+];
+webTechs.sort();
+console.log(webTechs);
+*/
+
+///---------------------EJERCICIOS----------------------------------------
+import { countries } from "./countries.js";
+import { webTechs } from "./web_techs.js";
+
+// Para que pueda funcionar la importacion. Hemos añadido en el index la opción
+// de modules para que no causará error.
+// Hemos cargado los modulos para poder usar el js de pasises y de websçç
+
+console.log("Lista de los paises en otro Javascript: ", countries);
+console.log("Lista de Webs en otro Javascript: ", countries);
+
+// 2.
+
+let text =
+  "I love teaching and empowering people. I teach HTML, CSS, JS, React, Python.";
+
+let nuevo = text.replace(/[.,]/g, "");
+
+// Al eliminar las comas, lo que debo de hacer es dividirlo por palabras.
+// Por ello usamos split y por espacios.
+// Aqui hemos usado split.
+let arraytexto = nuevo.split(" ");
+console.log(arraytexto);
+
+// 3.
+
+let shoppingCart = ["Milk", "Coffee", "Tea", "Honey"];
+
+// Agregar al principio
+let auxiliar = ["meat"];
+auxiliar = auxiliar.concat(shoppingCart); // El concat devuelve un arreglo que debe de asignarse.
+shoppingCart = auxiliar;
+
+// Para agregar al final si que usamos push
+shoppingCart.push("Sugar");
+console.log(shoppingCart);
+
+//Deberia hacer el array en minusculas. Debo iterar
+for (let i = 0; i < shoppingCart.length; i++) {
+  shoppingCart[i] = shoppingCart[i].toLocaleLowerCase();
+}
+// Deberia obetener el indice de donde esta miel y luego borrar
+const eliminar = prompt(
+  "¿Eres alergico a la miel?. Escribe miel"
+).toLocaleLowerCase();
+
+let indiceeliminado = shoppingCart.indexOf(eliminar);
+
+if (indiceeliminado != -1) {
+  shoppingCart.splice(indiceeliminado);
+}
+console.log(shoppingCart);
