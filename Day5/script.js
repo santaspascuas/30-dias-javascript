@@ -8,8 +8,8 @@ const vegetables = ["Tomato", "Potato", "Cabbage", "Onion", "Carrot"]; // array 
 const animalProducts = ["milk", "meat", "butter", "yoghurt"]; // array de strings, products
 
 // Para saber si longitud
-console.log("Numero de frutas", fruits.length);
-console.log(fruits);
+//console.log("Numero de frutas", fruits.length);
+//console.log(fruits);
 
 // Un array puede tener diferentes elementos
 
@@ -24,12 +24,12 @@ const arrayEjemplo = [
 // Voy a recorrerlos de forma normal
 
 for (let i = 0; i < arrayEjemplo.length; i++) {
-  console.log(arrayEjemplo[i]);
+  //console.log(arrayEjemplo[i]);
 }
 
 // Recorrer de forma mas moderna. Una especie de for each
 for (const elemento of arrayEjemplo) {
-  console.log("For of :", elemento);
+  //console.log("For of :", elemento);
 }
 
 arrayEjemplo.forEach((elemento) => {
@@ -123,8 +123,8 @@ import { webTechs } from "./web_techs.js";
 // de modules para que no causará error.
 // Hemos cargado los modulos para poder usar el js de pasises y de websçç
 
-console.log("Lista de los paises en otro Javascript: ", countries);
-console.log("Lista de Webs en otro Javascript: ", countries);
+//console.log("Lista de los paises en otro Javascript: ", countries);
+//console.log("Lista de Webs en otro Javascript: ", countries);
 
 // 2.
 
@@ -167,3 +167,41 @@ if (indiceeliminado != -1) {
   shoppingCart.splice(indiceeliminado);
 }
 console.log(shoppingCart);
+
+//4
+
+countries.forEach((element) => {
+  // Iriamos uo por uno y si es igual
+
+  if (element === "Ethiopia") {
+    alert(`esta dentro del array ${element}`);
+  }
+});
+
+if (!webTechs.includes("Sass")) {
+  webTechs.push("Sass");
+}
+const frontEnd = ["HTML", "CSS", "JS", "React", "Redux"];
+const backEnd = ["Node", "Express", "MongoDB"];
+const fullstakc = frontEnd.concat(backEnd);
+console.log(fullstakc);
+
+/// 5
+
+const edades = [19, 22, 19, 24, 20, 25, 26, 24, 25, 24];
+
+let bandera = 0;
+let auxiliar2 = 0;
+
+// Podria usar la logica, chaval
+for (let i = 0; i < edades.length; i++) {
+  bandera = i; // La posicion donde me situo
+  auxiliar2 = edades[i];
+  // deberiamos hacer otro bucle que lea por dentro y compare.
+
+  while (bandera > 0 && edades[bandera - 1] > auxiliar2) {
+    console.log(edades[bandera] + "Actual" + bandera);
+    console.log(edades[bandera - 1] + "ãsdsad" + (bandera - 1));
+    bandera--;
+  }
+}
