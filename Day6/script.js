@@ -125,3 +125,24 @@ for (const pais of paises) {
 }
 
 console.log(auxilio);
+
+//console.log(paises);
+
+let exiliar = [];
+
+for (let pais of paises) {
+  exiliar.push(pais);
+}
+
+let putdIV = document.getElementById("caja");
+let elemento = document.createElement("ul");
+
+// Añadimos al html
+
+document.body.appendChild(elemento); // Añadimos el elemento al html
+
+for (let pais of paises) {
+  let listali = document.createElement("li");
+  listali.textContent = pais;
+  elemento.appendChild(listali);
+}

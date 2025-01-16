@@ -157,3 +157,24 @@ if (valor >= 30) {
 } else if (valor >= 18.5 && valor < 25) {
   console.log("Normal");
 }
+
+const rest1 = {
+  name: "Restaurante faisan",
+  numerodeClientes: 25,
+  categorias: ["focaccia", "ensalada"],
+  servicio: ["desayunos", "comidas", "cenas"],
+};
+
+for (let indice in rest1) {
+  console.log(indice);
+}
+
+const nuevo = rest1.categorias;
+
+console.log(nuevo);
+
+for (let indice in rest1) {
+  if (indice === "categorias" || indice === "servicio") {
+    console.log(`${indice}:`, rest1[indice]);
+  }
+}
