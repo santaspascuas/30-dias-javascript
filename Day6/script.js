@@ -146,3 +146,28 @@ for (let pais of paises) {
   listali.textContent = pais;
   elemento.appendChild(listali);
 }
+
+// Ejemplo del examen
+
+let boton = document.getElementById("boton1");
+let boton2 = document.getElementById("boton2");
+let boton3 = document.getElementById("boton3");
+let numero = document.getElementById("texto");
+let resultado = document.getElementById("resultado");
+
+boton.addEventListener("click", calculaIva);
+
+function calculaIva(e) {
+  let identificador = e.target.name;
+
+  if (identificador == "diez") {
+    let num1 = parseInt(numero.value);
+    let resultados = num1 * (10 / 100);
+    resultado.textContent = resultados;
+  } else if (identificador == "veinte") {
+    let num1 = parseInt(numero.value);
+    let resultados = num1 * (20 / 100);
+    resultado.textContent = resultados;
+  } else {
+  }
+}
