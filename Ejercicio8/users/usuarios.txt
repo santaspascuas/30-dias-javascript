@@ -1,4 +1,0 @@
-admin:admin
-root:1234
-usuario:usuario
-alumno:alumno

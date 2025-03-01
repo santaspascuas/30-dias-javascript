@@ -116,65 +116,95 @@ console.log(ejemploDefecto("Lobito"));
 
 ///----------------------------------------EJERCICIOS------------------------------------------------------------------------------///
 
+function NombreCompleto() {
+  const nombre = "Bryan";
+  const apellido = "Cuadrado";
+  console.log(nombre + apellido);
+}
+NombreCompleto();
+
 function fullname(nombre, apellido) {
   console.log(`${nombre} ${apellido}`);
 }
 fullname("Bryan", "Cuadrado");
 
-const suma = function (num1, num2) {
-  let suma = num1 + num2;
-  return suma;
+const numero = function (num1, num2) {
+  return num1 + num2;
 };
-console.log(suma(5, 4));
+console.log(numero(5, 4) + "hola");
 
-//Area de un triangulo
-
-function areaTriangulo(base, altura) {
-  const area = base * altura;
+function CalculaRectangulo(ancho, alto) {
+  const area = ancho * alto;
   return area;
 }
 
-console.log(areaTriangulo(10, 5));
+console.log("El area del rectangulo" + CalculaRectangulo(10, 20));
 
-//Funcion  del IMC
-
-// Función del IMC
-function imc(peso, altura) {
-  const imc = peso / (altura * altura); // Fórmula correcta
-  return imc;
-}
-
-// Llamada a la función
-const valor = imc(95, 1.7); // Altura correctamente escrita
-
-// Clasificación según el IMC
-if (valor >= 30) {
-  console.log("Está obeso");
-} else if (valor < 18.5) {
-  console.log("Está bajo de peso");
-} else if (valor >= 25 && valor < 30) {
-  console.log("Tiene sobrepeso");
-} else if (valor >= 18.5 && valor < 25) {
-  console.log("Normal");
-}
-
-const rest1 = {
-  name: "Restaurante faisan",
-  numerodeClientes: 25,
-  categorias: ["focaccia", "ensalada"],
-  servicio: ["desayunos", "comidas", "cenas"],
+const prisma = function (ancho, alto, largo) {
+  return 2 * (ancho + alto);
 };
 
-for (let indice in rest1) {
-  console.log(indice);
+console.log("El area del prisma" + prisma(10, 20, 30));
+
+function AreadelCirculo(pi, radio) {
+  let area = pi * radio * radio;
+  return area;
 }
+console.log(AreadelCirculo(15, 20));
 
-const nuevo = rest1.categorias;
+const densidad = (masa, volumen) => masa / volumen;
+console.log(densidad(5, 25)); // Expresion de funcion flecha
 
-console.log(nuevo);
+// función flecja bloqueada
 
-for (let indice in rest1) {
-  if (indice === "categorias" || indice === "servicio") {
-    console.log(`${indice}:`, rest1[indice]);
+const densidad2 = (masa, volumen) => {
+  const densidad = masa / volumen;
+  return densidad;
+};
+console.log(densidad2(5, 25)); // Salida: 0.2
+
+function convertirCelcius(c) {
+  const farenhi = (c * 9) / 5 + 32;
+  return farenhi;
+}
+console.log(convertirCelcius(25));
+
+// Opcion 2
+
+const semana = [
+  "Lunes",
+  "Martes",
+  "Miercoles",
+  "Jueves",
+  "Viernes",
+  "Sabado",
+  "Domingo",
+];
+
+function lecturaArray(array) {
+  array.forEach((indice) => {
+    console.log(indice);
+  });
+}
+lecturaArray(semana);
+
+function showDateTime() {
+  const now = new Date();
+  const day = now.getDate();
+  const mes = now.getMonth();
+  const ano = now.getFullYear();
+  const hora = now.getHours();
+  const min = now.getMinutes();
+  return `${day}/${mes}/${ano} ${hora}:${min}`;
+}
+console.log(showDateTime());
+
+function reverseArray(array) {
+  let nuevo = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    nuevo.push(semana[i]);
   }
+  return nuevo;
 }
+
+console.log(reverseArray(semana));
