@@ -28,9 +28,13 @@ xhr.onerror = error;
 
 ///Convertirlo a fetch
 
-fetch("https://jsonplaceholder.typicode.com/todos/")
-  .then((respuesta) => respuesta.json()) // El fomato en json.
-  .then((resultado) => console.log(resultado)); // Lo obtenido lo printeamos
+try {
+  fetch("https://jsonplaceholder.typicode.com/todos/")
+    .then((respuesta) => respuesta.json()) // El fomato en json.
+    .then((resultado) => console.log(resultado));
+} catch (error) {
+  console.log("Hay un error", error.message);
+}
 
 // Tambien podemos utilizar await
 

@@ -1,210 +1,222 @@
-"use strict"; // Modo de uso estricto
+"use strict";
 
-/*
-//Funcion de decir nombre
+//Selector
 
-function funcionNombre(nombre, apellido) {
- // console.log(nombre + "-" + apellido);
-}
+const contenedor = document.getElementById("caja");
 
-funcionNombre("bryan", "Cuadrado");
+//Uso de funciones
 
-function HelloWolrd() {
-  //alert("Hola, Mundo!!!");
-}
-HelloWolrd();
+//1---Mensaje de bienvenida con sweet alert
+document.addEventListener("DOMContentLoaded", function () {
+  Swal.fire({
+    title: "Carga del html completa!. Prueba 7",
+    icon: "success",
+    draggable: true,
+  });
+});
 
-// Funciones vacias
-function NombreDetalles() {
-  let firstName = "Bryan";
-  let apellido = "Cuadrado";
-  let objetivo = "Ser programador y trabajar en el extranjero";
-  let total = firstName + " " + apellido + " " + objetivo;
-  return total;
-}
-//console.log(NombreDetalles());
+//1 Funcion de printear array
 
-/// fUNCION NCON VARIOS VALORES = A darle un array
+function PrintearArray(array) {
+  const enunciado = document.createElement("h2");
+  enunciado.textContent = "Ejercicio1";
 
-const ejemplo = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  const lista = document.createElement("ul");
+  for (let i = 0; i < array.length; i++) {
+    let li = document.createElement("li");
+    li.textContent = `Lista creada de forma dinamica ---->${array[i]}`;
+    li.id = `id${i}`;
 
-let sumatorio = 0;
-function sumaArrays(array) {
-  for (const indice of ejemplo) {
-    sumatorio += indice;
+    lista.appendChild(li);
   }
-  return sumatorio;
+  //faltaria unir al contenedor
+  //enunciado
+  contenedor.appendChild(enunciado);
+
+  //-----
+  contenedor.appendChild(lista);
+}
+let nuevo = ["Ponemos", "Fisica", "o", "Quimica"];
+PrintearArray(nuevo);
+
+//2
+
+function crearfecha() {
+  const salida = document.getElementById("ej2");
+  let fecha = new Date();
+  let dia = fecha.getDate().toString().padStart(2, "0");
+  let mes = fecha.getMonth().toString().padStart(2, "0");
+  let anio = fecha.getFullYear();
+  let hora = fecha.getHours();
+  let minute = fecha.getMinutes();
+  const formatop = `${dia}/${mes}/${anio}  ${hora}: ${minute}`;
+  salida.textContent = formatop;
 }
 
-console.log(sumaArrays(ejemplo));
-
-/// Funcion felchita
-sumatorio = 0;
-const ejemplos12 = function (array) {
-  for (const indice of ejemplo) {
-    sumatorio += indice;
+crearfecha();
+let numero = [1, 2, 3, 4, 5];
+const arrayreves = (array) => {
+  let reves = [];
+  for (let i = array.length - 1; i >= 0; i--) {
+    reves.push(array[i]);
   }
-  return sumatorio;
+  return reves;
 };
 
-console.log(ejemplos12(ejemplo));
+console.log(arrayreves(numero));
 
-/// Las funciones normales aceptan un numero de paramretros ilimitado
-// Podemos meterle directamemte el array y se les suma.
+/// 3------------------------------------
 
-function sumaTodos() {
+function sumaArrays(inicio, fin) {
   let suma = 0;
-
-  for (let i = 0; i < arguments.length; i++) {
-    suma += arguments[i];
+  for (let i = inicio; i < fin; i++) {
+    suma += i;
   }
   return suma;
 }
-console.log(sumaTodos(10, 20, 13, 40, 10)); // 93
+let resultado = sumaArrays(5, 10);
+console.log(resultado);
 
-// Ejemplo con la funcion flecha de paso de varios parametros sin estar declarados con anterioridad.
+///4-----------
 
-const sumatorios = (...args) => {
-  let sum = 0;
-  for (const element of args) {
-    sum += element;
+function cuentaPares(numero) {
+  let contarPares = 0;
+  let contarImpares = 0;
+  for (let i = 0; i < numero; i++) {
+    if (i % 2 === 0) {
+      contarPares++;
+    } else {
+      contarImpares++;
+    }
   }
-  return sum;
-};
-console.log(sumatorios(15, 20, 30, 25, 10, 33, 40)); // 173
+  return `El numero de pares: ${contarPares} y el numero de impares :${contarImpares}`;
+}
 
-/// Ejemplo de funciones anonimas
+console.log(cuentaPares(70));
 
-const funcionAnonima = function () {
-  console.log("Soy una funcion anonima");
-};
-funcionAnonima(); // Aqui esta la llamada de la función
+function userIdGenerator() {
+  const datos = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+  let numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-// Ejemplo de funciones de autoinvocacion
+  let limite = 7;
 
-(function (n) {
-  console.log(n * n);
-})(2);
+  let id = [];
+  let random = 0;
+  let bandera = 0;
 
-// Uso de la funcion flecha.------
-
-const cambioaMayusculas = (array) => {
-  const newArray = [];
-
-  for (const elemento of array) {
-    newArray.push(elemento.toLowerCase());
+  for (let i = 0; i < limite; i++) {
+    bandera = i;
+    random = Math.floor(Math.random() * datos.length);
+    if (bandera < 3) {
+      id.push(datos[random]);
+    } else {
+      random = Math.floor(Math.random() * numeros.length); // Índice válido para `numeros`
+      id.push(numeros[random]);
+    }
   }
-  return newArray;
-};
-const countries = ["Finland", "Sweden", "Norway", "Denmark", "Iceland"];
-console.log(cambioaMayusculas(countries));
 
-const printFullName = (firstName, lastName) => {
-  return `${firstName} ${lastName}`;
-};
-
-console.log(printFullName("Bryan", "Cuadrado"));
-
-// Funciones con mensaje por defectos o variables por defecto. Sustituyen a la variable por defecto para printear la funcion
-
-function ejemploDefecto(name = "Bryan") {
-  let mensaje = `${name}, bienvenido al reto de los 30 día de javascritp`;
-  return mensaje;
-}
-console.log(ejemploDefecto("Lobito"));
-*/
-
-///----------------------------------------EJERCICIOS------------------------------------------------------------------------------///
-
-function NombreCompleto() {
-  const nombre = "Bryan";
-  const apellido = "Cuadrado";
-  console.log(nombre + apellido);
-}
-NombreCompleto();
-
-function fullname(nombre, apellido) {
-  console.log(`${nombre} ${apellido}`);
-}
-fullname("Bryan", "Cuadrado");
-
-const numero = function (num1, num2) {
-  return num1 + num2;
-};
-console.log(numero(5, 4) + "hola");
-
-function CalculaRectangulo(ancho, alto) {
-  const area = ancho * alto;
-  return area;
+  return id;
 }
 
-console.log("El area del rectangulo" + CalculaRectangulo(10, 20));
+const datos = userIdGenerator();
 
-const prisma = function (ancho, alto, largo) {
-  return 2 * (ancho + alto);
-};
+console.log(datos);
 
-console.log("El area del prisma" + prisma(10, 20, 30));
+function generarIdlvl3(longitud, repetido) {
+  const datos = [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G",
+    "H",
+    "I",
+    "J",
+    "K",
+    "L",
+    "M",
+    "N",
+    "O",
+    "P",
+    "Q",
+    "R",
+    "S",
+    "T",
+    "U",
+    "V",
+    "W",
+    "X",
+    "Y",
+    "Z",
+  ];
+  let numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
-function AreadelCirculo(pi, radio) {
-  let area = pi * radio * radio;
-  return area;
-}
-console.log(AreadelCirculo(15, 20));
-
-const densidad = (masa, volumen) => masa / volumen;
-console.log(densidad(5, 25)); // Expresion de funcion flecha
-
-// función flecja bloqueada
-
-const densidad2 = (masa, volumen) => {
-  const densidad = masa / volumen;
-  return densidad;
-};
-console.log(densidad2(5, 25)); // Salida: 0.2
-
-function convertirCelcius(c) {
-  const farenhi = (c * 9) / 5 + 32;
-  return farenhi;
-}
-console.log(convertirCelcius(25));
-
-// Opcion 2
-
-const semana = [
-  "Lunes",
-  "Martes",
-  "Miercoles",
-  "Jueves",
-  "Viernes",
-  "Sabado",
-  "Domingo",
-];
-
-function lecturaArray(array) {
-  array.forEach((indice) => {
-    console.log(indice);
-  });
-}
-lecturaArray(semana);
-
-function showDateTime() {
-  const now = new Date();
-  const day = now.getDate();
-  const mes = now.getMonth();
-  const ano = now.getFullYear();
-  const hora = now.getHours();
-  const min = now.getMinutes();
-  return `${day}/${mes}/${ano} ${hora}:${min}`;
-}
-console.log(showDateTime());
-
-function reverseArray(array) {
-  let nuevo = [];
-  for (let i = array.length - 1; i >= 0; i--) {
-    nuevo.push(semana[i]);
+  let id = "";
+  let array = [];
+  let random = 0;
+  let bandera = 0;
+  for (let i = 0; i < repetido; i++) {
+    id = " ";
+    console.log("Las filas");
+    for (let j = 0; j < longitud; j++) {
+      if (j < 3) {
+        let random = Math.floor(Math.random() * datos.length);
+        id += datos[random];
+      } else {
+        let random = Math.floor(Math.random() * numeros.length);
+        id += numeros[random];
+      }
+    }
+    array.push(id);
   }
-  return nuevo;
+  return array;
 }
 
-console.log(reverseArray(semana));
+const arrayDatos = generarIdlvl3(5, 3);
+
+console.log(arrayDatos);
+
+function mezclaArray(array) {
+  for (let i = 0; i < array.length; i++) {
+    //Genero el random.
+    let random = Math.floor(Math.random() * array.length);
+    //eSTABA SOBREESCRIBIENDO
+    if (i != random) {
+      let aux = array[i];
+      array[i] = array[random];
+      array[random] = aux;
+    }
+    return array;
+  }
+}
+
+console.log(mezclaArray(nuevo));
