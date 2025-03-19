@@ -147,7 +147,7 @@ function userIdGenerator() {
 
 const datos = userIdGenerator();
 
-console.log(datos);
+//console.log(datos);
 
 function generarIdlvl3(longitud, repetido) {
   const datos = [
@@ -186,7 +186,7 @@ function generarIdlvl3(longitud, repetido) {
   let bandera = 0;
   for (let i = 0; i < repetido; i++) {
     id = " ";
-    console.log("Las filas");
+    //console.log("Las filas");
     for (let j = 0; j < longitud; j++) {
       if (j < 3) {
         let random = Math.floor(Math.random() * datos.length);
@@ -203,7 +203,7 @@ function generarIdlvl3(longitud, repetido) {
 
 const arrayDatos = generarIdlvl3(5, 3);
 
-console.log(arrayDatos);
+//console.log(arrayDatos);
 
 function mezclaArray(array) {
   for (let i = 0; i < array.length; i++) {
@@ -219,4 +219,69 @@ function mezclaArray(array) {
   }
 }
 
-console.log(mezclaArray(nuevo));
+//console.log(mezclaArray(nuevo));
+
+function sumaYdetecta(array) {
+  //lee y debe de detectar si es numero
+  let suma = 0;
+  for (let i = 0; i < array.length; i++) {
+    if (!isNaN(array[i])) {
+      suma += array[i];
+    }
+  }
+
+  return suma;
+}
+
+let generadosTS = ["Avocado", "Tomato", "Potato", "Mango", "patata", 20, 10];
+const datitos = sumaYdetecta(generadosTS);
+console.log(datitos);
+
+const midificado = function (array) {
+  //primero miraremos su ongitud
+  let longitud = array.length;
+  if (longitud > 5) {
+    let aux = array[4];
+    array[4] = aux.toUpperCase();
+    return array;
+  }
+
+  return "Elemento no encontardo";
+};
+
+console.log(midificado(generadosTS));
+
+function esPrimo(numero) {
+  for (let i = 2; i < numero; i++) {
+    if (numero % i === 0) {
+      return false;
+    }
+  }
+  return true;
+}
+
+console.log(esPrimo(20));
+
+// Array con valores unicos
+
+let prueba = ["Google", "Facebook", "Apple", "Apple"];
+
+let verificacion = new Array(prueba.length).fill(true);
+let aux;
+let posicion;
+
+for (let i = 0; i < prueba.length; i++) {
+  for (let j = 0; j < prueba.length; j++) {
+    if (prueba[i] === prueba[j] && j != i) {
+      verificacion[i] = false;
+    }
+  }
+
+  console.log(verificacion);
+  /*
+  while (posicion > 0 && prueba[posicion - 1] !== aux) {
+    console.log(`${prueba[posicion - 1]} comprueba actual ---> ${aux}`);
+    posicion--; // Mover la posición hacia atrás para evitar un bucle infinito
+  }
+*/
+}
