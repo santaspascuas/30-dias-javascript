@@ -4,6 +4,7 @@ const presupuesto = document.getElementById("texto");
 const boton = document.getElementById("boton");
 const cruzBoton = document.getElementById("cruz");
 const anadirGasto = document.getElementById("anadirGasto");
+const overlay = document.querySelector(".overlay");
 
 //fantasma-div
 const fantasma = document.querySelector(".fantasma");
@@ -64,22 +65,10 @@ function obtenerPresupuesto() {
 
 function mostrarGastos() {
   console.log("Te estoy clickeando");
-  AbrirEmergente(); // Ahora debemos de poder obtener cosas del formulario
-  // const frm = document.getElementById("formulario");
-
-  // const { gasto, cantidad, categorias } = frm.elements; // Obtenemos las referencias por desestructuracion
-
-  // if (gasto.value == "") {
-  //   console.log("Estoy vacia");
-  // }
-
-  // // gasto.addEventListener("change", function (event) {
-  // //   const valor = event.target.value;
-  // // });
+  AbrirEmergente();
 }
 let gastosAnadidos = [];
 console.log(gastosAnadidos);
-
 let acumulador = 0;
 
 function anadirGastos() {
@@ -96,47 +85,66 @@ function anadirGastos() {
       text: "El gasto y la cantidad estan vacios",
     });
   } else {
+    //HABRI QUE TENER ALGO QUE SINO HAY PRESUPUESTO. NO haya mas gasto.
+    let dato = Number(inicios[0].Disponible); // Este es el disponible Total
+
+    console.log(dato);
+    //Mi disponible mayor que el gasto acumulado.
     let gastos = {
       gasto: gasto.value,
       cantidad: cantidad.value,
       categorias: categorias.value,
     };
     let gastoAcumulador = Number(gastos.cantidad);
-    acumulador += gastoAcumulador;
-    gastosAnadidos.push(gastos); //Añadimos los gastos a la coleccion.
-    // Una vez añadido el gasto. Procedemos a crear el div. y Añadir el gasto.
 
-    const claves = Object.keys(gastos);
+    if (dato > gastoAcumulador + acumulador) {
+      console.log("Funciona cuando los acumulados son menores");
+      acumulador += gastoAcumulador;
+      gastosAnadidos.push(gastos); //Añadimos los gastos a la coleccion.
+      // Una vez añadido el gasto. Procedemos a crear el div. y Añadir el gasto.
 
-    const crearDiv = document.createElement("div");
-    const crearDiv2 = document.createElement("div");
+      const claves = Object.keys(gastos);
 
-    crearDiv.className = "Contenido-gasto";
-    crearDiv2.className = "Gastos contenedor";
+      const crearDiv = document.createElement("div");
+      const crearDiv2 = document.createElement("div");
 
-    const anadirGastoDiv = document.querySelector(".formularioGasto");
+      crearDiv.className = "Contenido-gasto";
+      crearDiv2.className = "Gastos contenedor";
 
-    for (let i = 0; i < claves.length; i++) {
-      const crearP = document.createElement("p");
-      crearP.id = claves[i];
-      crearP.innerHTML = `<strong>${claves[i]}:</strong> ${gastos[claves[i]]}`;
-      crearDiv2.appendChild(crearP);
+      const anadirGastoDiv = document.querySelector(".formularioGasto");
+
+      for (let i = 0; i < claves.length; i++) {
+        const crearP = document.createElement("p");
+        crearP.id = claves[i];
+        crearP.innerHTML = `<strong>${claves[i]}:</strong> ${
+          gastos[claves[i]]
+        }`;
+        crearDiv2.appendChild(crearP);
+      }
+      crearDiv.appendChild(crearDiv2);
+      anadirGastoDiv.appendChild(crearDiv);
+      //cerramos la ventana
+      CerrarEmergente();
+
+      //cambiamos los valores con desestructuracion
+      document.getElementById(
+        "Disponible"
+      ).innerHTML = `<strong>Disponible:</strong> $${
+        inicios[0].Disponible - acumulador
+      }`;
+
+      document.getElementById(
+        "Gastado"
+      ).innerHTML = `<strong>Gastado:</strong> $${acumulador}`;
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "El gasto es mayor al disponible",
+      });
+
+      CerrarEmergente();
     }
-    crearDiv.appendChild(crearDiv2);
-    anadirGastoDiv.appendChild(crearDiv);
-    //cerramos la ventana
-    CerrarEmergente();
-
-    //cambiamos los valores con desestructuracion
-    document.getElementById(
-      "Disponible"
-    ).innerHTML = `<strong>Disponible:</strong> $${
-      inicios[0].Disponible - acumulador
-    }`;
-
-    document.getElementById(
-      "Gastado"
-    ).innerHTML = `<strong>Gastado:</strong> $${acumulador}`;
   }
 }
 
@@ -144,6 +152,7 @@ function anadirGastos() {
 boton.addEventListener("click", obtenerPresupuesto);
 cruzBoton.addEventListener("click", mostrarGastos);
 anadirGasto.addEventListener("click", anadirGastos);
+overlay.addEventListener("click", clickyCerrar);
 
 //Funcion para visualizar el emergente
 
@@ -157,4 +166,13 @@ function AbrirEmergente() {
 function CerrarEmergente() {
   const ventaEmergente = document.querySelector(".overlay");
   ventaEmergente.style.visibility = "hidden";
+}
+
+function clickyCerrar(event) {
+  //Esto hace que si clickeas fuera. Se sale
+  const datos = event.target.className;
+  if (datos === "overlay") {
+    overlay.style.visibility = "hidden";
+  }
+  console.log(datos);
 }
