@@ -1,0 +1,40 @@
+footer {
+  width: 100%;
+  height: auto;
+  background-color: #1f2024;
+  margin: auto;
+}
+
+footer .navbar {
+  text-align: center;
+}
+footer .navBar li {
+  display: inline-block;
+  margin: 0 10px;
+}
+footer .navBar li a {
+  color: #fff;
+  font-size: 14px;
+  font-family: "Poppins", sans-serif;
+  cursor: pointer;
+}
+footer .navBar li a:hover {
+  color: #57cb9b;
+}
+footer .textArea {
+  justify-content: center;
+  display: flex;
+  margin: auto;
+  padding: 10px 0 30px;
+}
+footer .textArea h1 {
+  color: #fff;
+  margin: 5px 15px;
+}
+footer .textArea .red {
+  color: #ff0000;
+}
+
+footer .textArea .colored {
+  color: #57cb9b;
+}

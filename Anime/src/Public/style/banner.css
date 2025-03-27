@@ -1,0 +1,42 @@
+#hero-banner {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  overflow: hidden;
+}
+
+#background-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+.textarea {
+  position: relative;
+  z-index: -1;
+}
+.highlight {
+  color: yellow;
+}
+.banner-wave {
+  position: absolute;
+  bottom: 0;
+}
+/*
+.banner-wave {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+*/
