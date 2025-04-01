@@ -21,8 +21,7 @@ module.exports = {
       ]);
       //El problema esta en que postgres no indetificaba la tabla al estar por defecto en la query como minuscula.
       //Da por defecto que el nombre de la tabla este en minusculas.
-
-      return result.rows;
+      return `Usuario introducido c`;
     } catch (error) {
       console.error("Error al obtener el usuario:", error.message);
       return []; // Retornar array vacío en caso de error

@@ -1,0 +1,17 @@
+**\*Conexion a la base de datos**
+1--Problema al conectarse. Si estas usando el modulo de configuracion. El modulo debes de usarlo.
+2--Problema en la devilucion de las promesas en la parte del db. Recuerda que una promesa retorna la conexion. si le añades otros {} no retorna nada.
+3--al usar promesas para la espera de las operaciones. Debes de usar await par alas conexultas.
+4--- Encontramos el error. No devolviamos la conexion y por eso no se conectaba a la base de datos.
+5--- Ahora vemos que debemos de separar el servicios. Solo vamos a exportar las llamadas de las funciones. Es decir, separamos el export y subimos las funciones fuera del modulo. En el modulo solo habra llamadas
+6--- Hay que asegurarse de validar las cosas antes de insertarlas. Validacion de campos.
+7--- Hay que usar el controlador para conrolar lo retornado.
+**_iMPORTANTE_**
+El controlador recibe los datos de las consultas. El controla los errores y las respuestas. Unicamente el router llama al modulo con la funcion determinada. Haciendo que el modulo quede limpio.
+8---Crearemos un archivo commosn que sera el estandar de los errores.
+El archivo coomon es un modulo exportable que tendra como variables:
+(response, message, body)--establecemos una resopuesta comun. Estas respuestas comunes seran para los response y los errores del controlador. Asi tenemos un estandar de respyestas.
+Instalar el modulo de encriptacion de los datos. Para meter el hash en la base de datos y luego confirmar su loge.
+11--- Crear un index de rutas porque todo lo que es fuera de las router, genera problema. Index.
+12--Interesante utilizar utils para otro tipo de utilidades en el fichero. Podemos usar la estructura de services donde planteamos funciones y luego las llamamos. 13. Chati me recomiendo tener un archivo llamado auth donde hacer los json web tolkens.
+13--Creamos un modulo de autentificacion donde creamos los jsontokens. Estos se deben de almacenar en las cookies del frontend. Ahora la idea es poder usar lo generado para controlar las visualizaciones del cliente.

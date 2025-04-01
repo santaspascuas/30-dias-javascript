@@ -24,6 +24,7 @@ module.exports.Database = () =>
       }
 
       resolve(conexion);
+      return conexion;
     } catch (error) {
       console.log(error.message);
       reject(error);

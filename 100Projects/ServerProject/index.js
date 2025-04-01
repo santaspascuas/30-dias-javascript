@@ -23,8 +23,10 @@ app.listen(Config.port, () => {
 async function main() {
   try {
     const pool = await Database(); // Obtenemos el pool de conexiones
-    const result = await pool.query("SELECT NOW()"); // Consulta de prueba
+    const client = await pool.connect();
+    const result = await client.query("SELECT NOW()"); // Consulta de prueba
     console.log("Hora actual en PostgreSQL:", result.rows[0].now);
+    client.release();
   } catch (error) {
     console.error("Error al conectar a PostgreSQL:", error);
   }
