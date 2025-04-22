@@ -1,0 +1,14 @@
+1---Empezar a crear el archivo de environmenmt para las configuraciones.
+2--Empezar a realizar los archivos de rutas con sus controladores.
+3--No separa el modulo de configuracion. Asique lo vamos a hacer nosoyros.
+4---Definimos la ruta y solo establecemos los metodos del controlador.
+5-- El body me sale como indifinido debido a que necesito el midelware para poder usar el json del body. Eso lo ponemos en el index.
+6--Instalamos la libreria de express-async-handler porque queremos atrapar los errores sin necesidad de estar reptieindo el codifo de try catch. Esto hace que si hay un error, 
+salte al handler de errores. Es decir, al midelware de errores creado.
+7--Debemos de realizar la conexion con Shema de Mongo. Esto hace que tengamos una plantilla para controlar los datos que metemos
+--Controlar los datos y hacer validaciones con middlwares tambien.
+8--- El uso de middlwares para poder comprobar con el jsonwebtoken el poder acceder a ciertas rutas
+9-- La idea es que una vez tienes el contacto obtenido. Debemos de controlar que el id coincide con el obtenido en la base de datos. Por ello vamos a modiciar el squema del usuario
+10-- Mirar a ver si puedo añadir en mongodb roles y sacar el rol para poder entrar en cosas.
+
+
